@@ -1,4 +1,4 @@
-```
+
 <div align="center">
 
 # 🚀 ResuMate AI
@@ -161,8 +161,76 @@ ResuMate AI uses modern JavaScript technologies across its frontend and backend.
 
 ResuMate AI follows a client-server architecture.
 ```
+resume-builder/
+│
+├── client/                         # Frontend - React + Vite
+│   ├── public/                     # Static assets
+│   │
+│   ├── src/
+│   │   ├── app/                    # Redux store configuration
+│   │   ├── features/               # Redux slices and state management
+│   │   ├── assets/                 # Images and other assets
+│   │   │
+│   │   ├── components/             # Reusable UI components
+│   │   │   ├── templates/          # Resume templates
+│   │   │   ├── PersonalInfoForm.jsx
+│   │   │   ├── ProfessionalSummaryForm.jsx
+│   │   │   ├── ExperienceForm.jsx
+│   │   │   ├── EducationForm.jsx
+│   │   │   ├── ProjectForm.jsx
+│   │   │   ├── SkillsForm.jsx
+│   │   │   ├── ResumePreview.jsx
+│   │   │   ├── TemplateSelector.jsx
+│   │   │   └── ColorPicker.jsx
+│   │   │
+│   │   ├── configs/                # API configuration
+│   │   ├── pages/                  # Application pages
+│   │   │   ├── Home.jsx
+│   │   │   ├── Login.jsx
+│   │   │   ├── Dashboard.jsx
+│   │   │   ├── ResumeBuilder.jsx
+│   │   │   ├── Preview.jsx
+│   │   │   └── Layout.jsx
+│   │   │
+│   │   ├── App.jsx                 # Root component and routing
+│   │   ├── main.jsx                # Application entry point
+│   │   └── index.css               # Global styles
+│   │
+│   ├── package.json
+│   └── vite.config.js
+│
+├── server/                         # Backend - Node.js + Express
+│   ├── configs/                    # Service configurations
+│   │   ├── db.js                   # MongoDB connection
+│   │   ├── ai.js                   # AI service configuration
+│   │   ├── imageKit.js              # ImageKit configuration
+│   │   └── multer.js               # File upload configuration
+│   │
+│   ├── controllers/                # Application business logic
+│   │   ├── userController.js       # Authentication and users
+│   │   ├── resumeController.js     # Resume CRUD operations
+│   │   └── aiController.js         # AI-powered features
+│   │
+│   ├── middleware/                 # Express middleware
+│   │   └── authMiddleware.js       # JWT authentication
+│   │
+│   ├── models/                     # MongoDB data models
+│   │   ├── User.js                 # User schema
+│   │   └── Resume.js               # Resume schema
+│   │
+│   ├── routes/                     # REST API routes
+│   │   ├── userRoutes.js           # User endpoints
+│   │   ├── resumeRoutes.js         # Resume endpoints
+│   │   └── aiRoutes.js              # AI endpoints
+│   │
+│   ├── .env                        # Backend environment variables
+│   ├── package.json
+│   └── server.js                   # Backend entry point
+│
+├── .gitignore                      # Git ignore rules
+├── README.md                       # Project documentation
+└── LICENSE                         # Project license
 
-┌──────────────────────┐ │ Browser │ └──────────┬───────────┘ │ ▼ ┌──────────────────────┐ │ React + Vite │ │ Frontend │ └──────────┬───────────┘ │ Axios / HTTP │ ▼ ┌──────────────────────┐ │ Express.js API │ │ │ │ Authentication │ │ Resume Controllers │ │ AI Controllers │ └───────┬──────┬───────┘ │ │ ┌─────────┘ └─────────┐ ▼ ▼ ┌──────────────────┐ ┌──────────────────┐ │ MongoDB │ │ External APIs │ │ Users & Resumes │ │ AI / ImageKit │ └──────────────────┘ └──────────────────┘
 
 ```
 
@@ -593,6 +661,3 @@ If you intend to release it under the MIT License, include an appropriate `LICEN
 
 GitHub Repository
 
-\</div\>
-
-```
