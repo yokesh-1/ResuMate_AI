@@ -33,8 +33,8 @@ export const registeruser = async (req,res) =>{
        })
 
        //return success message
-       const token =generateToken(newUser._id);
-       newUser.password = undefined;
+       const token =generateToken(newuser._id);
+       newuser.password = undefined;
        return res.status(201).json({message :'user created succesfully', token , user :newuser})
 
 
@@ -59,7 +59,7 @@ export const loginuser = async (req,res) =>{
        }
 
        // check and verify password 
-       if(!user.comparePasword(password)){
+       if (!(await user.comparePassword(password))) {
         return res.status(400).json({message :'Invalid password'}) 
        }
 
@@ -108,7 +108,7 @@ export const getUserResumes = async  (req , res ) =>{
         const userId = req.userId;
 
         //return user resume from Db
-        const resumes = await Resume.find(userId)
+        const resumes = await Resume.find({userId})
         return res.status(200).json({resumes})
     }
 

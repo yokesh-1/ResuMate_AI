@@ -105,41 +105,72 @@ export const getPublicResumeById = async(req, res) =>{
 // PUT :/api/resumes/update
 
 
-export const updateResume = async(req, res) =>{
-    try{
-     const userId = req.userId;
-     const {resumeId , resumeData ,removeBackground} = req.body;
+export const updateResume = async (req, res) => {
+  try {
+    const userId = req.userId;
+    const { resumeId, resumeData, removeBackground } = req.body;
+    const image = req.file;
 
-    const image =req.file;
-
-    let resumeDataCopy =JSON.parse(resumeData);
-    
-    if (image) {
-       const imageBufferData = fs.createReadStream(image.path);
-
-        const response = await imageKit.files.upload({
-        file: imageBufferData,
-        fileName: "resume.png",
-        folder: "user-resumes",
-        transformation: {
-          pre:
-            "w-300,h-300,fo-face,z-0.75" +
-            (removeBackground ? ",e-bgremove" : ""),
-        },
+    if (!resumeId || !resumeData) {
+      return res.status(400).json({
+        message: "Resume ID and resume data are required",
       });
-
-      resumeDataCopy.personal_info.image = response.url;
-
-        }
-
-    const resume = await Resume.findOneAndUpdate({userId, _id: resumeId } , resumeDataCopy , {new : true})
-
-
-     // return succcess message
-     return res.status(200).json({message : "Saved succesfully " , resume})
     }
 
-    catch(error){
-        return res.status(400).json({message: error.message})
-    }
+    // Convert resumeData string into an object
+    const resumeDataCopy =
+      typeof resumeData === "string"
+        ? JSON.parse(resumeData)
+        : { ...resumeData };
+
+    // Upload image if provided
+if (image) {
+  try {
+    const imageBufferData = fs.createReadStream(image.path);
+
+    const response = await imageKit.files.upload({
+      file: imageBufferData,
+      fileName: image.originalname || "resume.png",
+      folder: "user-resumes",
+      transformation: {
+        pre:
+          "w-300,h-300,fo-face,z-0.75" +
+          (removeBackground === "yes" ? ",e-bgremove" : ""),
+      },
+    });
+
+    resumeDataCopy.personal_info = {
+      ...resumeDataCopy.personal_info,
+      image: response.url,
+    };
+  } catch (uploadError) {
+    console.error("ImageKit upload error:", uploadError);
+    throw uploadError;
+  }
 }
+
+    // Update resume in MongoDB
+    const resume = await Resume.findOneAndUpdate(
+      { userId, _id: resumeId },
+      { $set: resumeDataCopy },
+      { returnDocument: "after", runValidators: true }
+    );
+
+    if (!resume) {
+      return res.status(404).json({
+        message: "Resume not found",
+      });
+    }
+
+    return res.status(200).json({
+      message: "Saved successfully",
+      resume,
+    });
+  } catch (error) {
+    console.error("Update resume error:", error);
+
+    return res.status(400).json({
+      message: error.message,
+    });
+  }
+};

@@ -152,6 +152,9 @@ export const uploadResume = async (req, res) => {
 
     res.json({ resumeId: newResume._id });
   } catch (error) {
-    return res.status(400).json({ message: error.message });
+   console.error("AI upload error:", error);
+   return res.status(500).json({
+    message: error.message || "Failed to process resume",
+   })
   }
 };

@@ -9,8 +9,7 @@ userRouter.post('/register' , registeruser )
 userRouter.post('/login' ,loginuser)
 
 // Routes (If i hit this Route ) -> Middleware (middleware checks) -> Controller (Logic inside the controller runs)
-userRouter.get('data' , protect ,getUserById )
-userRouter.get('resumes' ,protect , getUserResumes)
-
+userRouter.get('/data' , protect ,getUserById )
+userRouter.get('/resumes' ,protect , getUserResumes)
 
 export default userRouter;
