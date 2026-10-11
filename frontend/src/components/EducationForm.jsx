@@ -114,6 +114,9 @@ const addEducation = () => {
                   placeholder="GPA (optional)"
                   className="px-3 py-2 text-sm"
                 />
+
+
+                
               </div>
             </div>
           ))}

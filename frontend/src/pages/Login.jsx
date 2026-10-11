@@ -1,7 +1,13 @@
 import React from 'react'
 import {Mail, User2Icon, Lock} from 'lucide-react'
+import api from '../configs/api'
+import { useDispatch } from 'react-redux'
+import { login } from '../app/features/authSlice'
+import toast from 'react-hot-toast'
 
 const Login = () => {
+
+    const dispatch = useDispatch()
     const query = new URLSearchParams(window.location.search)
     const urlState = query.get('state')
     const [state, setState] = React.useState( "urlState" || "login")
@@ -14,6 +20,14 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        try {
+            const {data} = await api.post(`/api/users/${state}` , formData)
+            dispatch(login(data))
+            localStorage.setItem('token' , data.token)
+            toast.success(data.message)
+        } catch (error) {
+            toast(error?.response?.data?.message || error.message)
+        }
 
     }
 
@@ -22,10 +36,24 @@ const Login = () => {
         setFormData(prev => ({ ...prev, [name]: value }))
     }
 
-  return (
-    <div className='flex flex-items justify-center min-h-screen bg-gray-50'> 
-    <form onSubmit={handleSubmit} className="sm:w-[350px] w-full text-center border border-gray-300/60 rounded-2xl px-8 bg-white">
-                <h1 className="text-gray-900 text-3xl mt-10 font-medium">{state === "login" ? "Login" : "Sign up"}</h1>
+
+//   return (
+//     <div className='flex flex-items justify-center min-h-screen bg-gray-50'> 
+//     <form onSubmit={handleSubmit} className="sm:w-[350px] w-full text-center border border-gray-300/60 rounded-2xl px-8 bg-white">
+                
+//             </form>
+//             </div>
+//   )
+// }
+
+
+return (
+  <div className="flex items-center justify-center min-h-screen bg-gray-50">
+    <form
+      onSubmit={handleSubmit}
+      className="w-full sm:w-[350px] box-border text-center border border-gray-300/60 rounded-2xl px-8 bg-white"
+    >
+      <h1 className="text-gray-900 text-3xl mt-10 font-medium">{state === "login" ? "Login" : "Sign up"}</h1>
                 <p className="text-gray-500 text-sm mt-2">Please {state} to continue</p>
                 {state !== "login" && (
                     <div className="flex items-center mt-6 w-full bg-white border border-gray-300/80 h-12 rounded-full overflow-hidden pl-6 gap-2">
@@ -51,9 +79,10 @@ const Login = () => {
                     {state === "login" ? "Login" : "Sign up"}
                 </button>
                 <p onClick={() => setState(prev => prev === "login" ? "register" : "login")} className="text-gray-500 text-sm mt-3 mb-11">{state === "login" ? "Don't have an account?" : "Already have an account?"} <a href="#" className="text-green-500 hover:underline">click here</a></p>
-            </form>
-            </div>
-  )
+    </form>
+  </div>
+);
+
 }
 
 export default Login
