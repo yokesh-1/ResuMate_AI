@@ -27,6 +27,7 @@ An AI-powered resume builder that helps you create, customize, preview, and shar
 ## 📌 Table of Contents
 
 - [🌟 Overview](#-overview)
+- [🌟 UI ](#-overview)
 - [✨ Features](#-features)
 - [🛠️ Tech Stack](#️-tech-stack)
 - [🏗️ Architecture](#️-architecture)
@@ -62,6 +63,40 @@ Whether you're a student preparing your first resume, a developer exploring new 
 - 📱 Work with a responsive user interface.
 
 ---
+
+## 🌟 UI Screenshots 
+### Home Page
+<img width="1920" height="3144" alt="UI" src="https://github.com/user-attachments/assets/684fab1d-6c7a-4e5d-a728-d8e29175360e" />
+
+---
+---
+
+
+### User Page
+<img width="1418" height="651" alt="Dashboard" src="https://github.com/user-attachments/assets/5af08e5f-ae50-4f1d-aeac-f55590c581dc" />
+
+---
+---
+
+
+### Multiple Resume Templates  and Color Accents
+
+<img width="1169" height="574" alt="Screenshot from 2026-10-12 08-34-58" src="https://github.com/user-attachments/assets/8f7fac01-2838-4ac0-b082-3339f6667e02" />
+
+---
+
+<img width="1469" height="922" alt="Template-1" src="https://github.com/user-attachments/assets/d9fa698e-c882-4640-a996-d3b7593bdb98" />
+
+---
+
+<img width="1259" height="855" alt="Screenshot from 2026-10-12 08-38-46" src="https://github.com/user-attachments/assets/0168400f-5ae5-47af-a279-56a85af47c0e" />
+
+---
+
+<img width="1167" height="658" alt="Screenshot from 2026-10-12 08-37-38" src="https://github.com/user-attachments/assets/ca753c68-d9b2-41ff-a65a-5485b2dc19bc" />
+
+---
+
 
 ## ✨ Features
 
