@@ -5,7 +5,7 @@
 
 ### Build a Resume That Gets You Noticed.
 
-An AI-powered resume builder that helps you create, customize, preview, and share professional resumes with ease.
+A full-stack MERN app for building, editing, and sharing professional resumes — with AI content enhancement, skill suggestions, and an agentic ATS reviewer.
 
 [![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
 [![Node.js](https://img.shields.io/badge/Node.js-Backend-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org/)
@@ -14,34 +14,22 @@ An AI-powered resume builder that helps you create, customize, preview, and shar
 
 **Create • Customize • Enhance • Share**
 
-[Features](#-features) ·
-[Tech Stack](#-tech-stack) ·
-[Installation](#-getting-started) ·
-[API](#-api-reference) ·
-[Deployment](#-deployment)
-
 </div>
 
----
+## ✨ Highlights
 
-## 📌 Table of Contents
+- **4 templates** (Classic, Modern, Minimal, Minimal Image) with live preview and custom accent colors
+- **AI enhance** — improve summaries and job descriptions (OpenAI)
+- **AI skill suggestions** — get relevant skills from your profession & experience
+- **AI Resume Reviewer agent** — scores ATS readiness, suggests fixes, and can apply them (tool-calling agent)
+- **PDF import** — upload an existing resume and auto-fill it
+- **Shareable public links** and JWT-secured accounts
 
-- [🌟 Overview](#-overview)
-- [🌟 UI ](#-overview)
-- [✨ Features](#-features)
-- [🛠️ Tech Stack](#️-tech-stack)
-- [🏗️ Architecture](#️-architecture)
-- [⚡ Getting Started](#-getting-started)
-- [🤖 AI Capabilities](#-ai-capabilities)
-- [🎨 Resume Customization](#-resume-customization)
-- [🔌 API Reference](#-api-reference)
-- [🚀 Deployment](#-deployment)
-- [🔐 Security](#-security)
-- [🗺️ Future Improvements](#️-future-improvements)
-- [🤝 Contributing](#-contributing)
-- [📄 License](#-license)
+## 🛠 Stack
 
----
+- **Frontend:** React 19, Redux Toolkit, React Router 7, Tailwind 4, Vite, Axios
+- **Backend:** Express 5, MongoDB (Mongoose), JWT, bcrypt, Multer
+- **Services:** OpenAI (content + agent), ImageKit (image CDN)
 
 ## 🌟 Overview
 
@@ -50,17 +38,6 @@ An AI-powered resume builder that helps you create, customize, preview, and shar
 Built using the MERN stack, it combines a React-based interface, an Express.js backend, MongoDB data storage, and AI-powered content enhancement.
 
 Whether you're a student preparing your first resume, a developer exploring new opportunities, or a professional updating your career profile, ResuMate AI provides tools to create and manage your resume in one place.
-
-### 🎯 Why ResuMate AI?
-
-- 📝 Create and edit resumes using structured forms.
-- 🤖 Improve job descriptions with AI-powered suggestions.
-- 🎨 Customize resume templates and accent colors.
-- 👀 Preview changes while editing.
-- 💾 Save resume information to a database.
-- 🔗 Share resumes through public links.
-- 🖼️ Upload a profile image and integrate image processing.
-- 📱 Work with a responsive user interface.
 
 ---
 
@@ -96,6 +73,50 @@ Whether you're a student preparing your first resume, a developer exploring new 
 <img width="1167" height="658" alt="Screenshot from 2026-10-12 08-37-38" src="https://github.com/user-attachments/assets/ca753c68-d9b2-41ff-a65a-5485b2dc19bc" />
 
 ---
+
+
+## 📚 Documentation
+
+Full developer docs live in [`docs/`](./docs/README.md):
+
+| Area | Docs |
+| ---- | ---- |
+| Overview | [Features](./docs/FEATURES.md) · [Tech Stack](./docs/TECH_STACK.md) · [Code Structure](./docs/CODE_STRUCTURE.md) |
+| Architecture | [Architecture](./docs/ARCHITECTURE.md) · [System Design](./docs/SYSTEM_DESIGN.md) · [Module Design](./docs/MODULE_DESIGN.md) · [Design Patterns](./docs/DESIGN_PATTERNS.md) · [Data Flow](./docs/DATA_FLOW.md) |
+| API | [API Reference](./docs/API.md) · [API Design](./docs/API_DESIGN.md) |
+| Data & Auth | [DB Schema](./docs/DATABASE_SCHEMA.md) · [DB Design](./docs/DATABASE_DESIGN.md) · [Auth Flow](./docs/AUTH_FLOW.md) |
+
+---
+
+## 🚀 Quick Start
+
+```bash
+# install
+cd client && npm install
+cd ../server && npm install
+
+# run (two terminals)
+cd server && npm run server   # API → http://localhost:3000
+cd client && npm run dev      # app → http://localhost:5173
+```
+
+### Environment
+
+**server/.env**
+```env
+MONGODB_URI=your_mongodb_uri
+JWT_SECRET=your_jwt_secret
+OPENAI_API_KEY=your_openai_key
+OPENAI_BASE_URL=optional_custom_endpoint
+OPENAI_MODEL=your_model          # required for AI + agent features
+IMAGEKIT_PRIVATE_KEY=your_imagekit_private_key
+PORT=3000
+```
+
+**client/.env**
+```env
+VITE_BASE_URL=http://localhost:3000
+```
 
 
 ## ✨ Features
@@ -690,7 +711,6 @@ If you intend to release it under the MIT License, include an appropriate `LICEN
 
 ### 💙 Built to Make Resume Creation Simpler
 
-**ResuMate AI** — Your experience deserves a better presentation.
 
 ⭐ If you find this project useful, consider giving the repository a star!
 
