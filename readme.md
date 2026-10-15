@@ -1,7 +1,7 @@
 
 <div align="center">
 
-# 🚀 ResuMate AI
+# 🚀 ResumePilot
 
 ### Build a Resume That Gets You Noticed.
 
