@@ -73,6 +73,18 @@ Whether you're a student preparing your first resume, a developer exploring new 
 <img width="1167" height="658" alt="Screenshot from 2026-10-12 08-37-38" src="https://github.com/user-attachments/assets/ca753c68-d9b2-41ff-a65a-5485b2dc19bc" />
 
 ---
+### Resume Reviewer Agent
+<img width="1379" height="852" alt="reviewer-agent" src="https://github.com/user-attachments/assets/ee87f732-dd92-4e3f-8e44-e87a87a61932" />
+
+
+---
+
+### Ai skill suggestion based on User
+<img width="1396" height="820" alt="skill-ai" src="https://github.com/user-attachments/assets/325e29b6-c12f-48af-9af2-8b4954dc6d0e" />
+
+
+---
+
 
 
 ## 📚 Documentation
