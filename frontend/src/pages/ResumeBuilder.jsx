@@ -10,6 +10,7 @@ import ExperienceForm from '../components/ExperienceForm'
 import EducationForm from '../components/EducationForm'
 import ProjectForm from '../components/ProjectForm'
 import SkillsForm from '../components/SkillsForm'
+import ResumeReviewAgent from "../components/ResumeReviewAgent";
 import {useSelector} from 'react-redux'
 import api from "../configs/api";
 import toast from 'react-hot-toast'
@@ -266,6 +267,9 @@ const saveResume = async () => {
                     activeSection.id==='skills' && (
                     <SkillsForm
                     data={resumeData.skills}
+                    profession={resumeData.personal_info?.profession}
+                    experience={resumeData.experience}
+
                     onChange={(data)=> setResumeData(prev=> ({...prev, skills: data})) } 
                     />
                     )
@@ -283,6 +287,12 @@ const saveResume = async () => {
 
               
             </div>
+            
+            <ResumeReviewAgent 
+            resumeId={resumeId}
+            onApplied={loadExistingResume}
+            />
+
           </div>
         
 

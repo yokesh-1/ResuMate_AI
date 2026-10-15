@@ -50,4 +50,4 @@ A breakdown of what the Resume Builder currently does, grounded in the actual im
 - No password reset or email verification flow.
 - No role-based access control.
 - PDF export is not implemented server-side; sharing is via public links.
-- AI endpoints depend on `OPENAI_API_KEY`, `OPENAI_BASE_URL`, and `OPENAI_MODEL` being configured.
+- AI endpoints depend on `GEMINI_API_KEY`, `OPENAI_BASE_URL`, and `MODEL` being configured.

@@ -1,8 +1,14 @@
-import { Plus, Sparkles, X } from "lucide-react";
+import { Loader2, Plus, Sparkles, X } from "lucide-react";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import api from "../configs/api";
+import toast from "react-hot-toast";
 
-const SkillsForm = ({ data, onChange }) => {
+const SkillsForm = ({ data, onChange, profession, experience }) => {
+  const { token } = useSelector((state) => state.auth);
   const [newSkill, setNewSkill] = useState("");
+  const [isSuggesting, setIsSuggesting] = useState(false);
+  const [suggestions, setSuggestions] = useState([]);
 
   const addSkill = () => {
     if (newSkill.trim() && !data.includes(newSkill.trim())) {
@@ -22,17 +28,59 @@ const SkillsForm = ({ data, onChange }) => {
     }
   };
 
+  const addSuggestion = (skill) => {
+    if (!data.includes(skill)) {
+      onChange([...data, skill]);
+    }
+    setSuggestions((prev) => prev.filter((s) => s !== skill));
+  };
+
+  const suggestSkills = async () => {
+    try {
+      setIsSuggesting(true);
+      const { data: res } = await api.post(
+        "/api/ai/suggest-skills",
+        { profession, experience, existingSkills: data },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+
+      const fresh = (res.skills || []).filter((s) => !data.includes(s));
+      setSuggestions(fresh);
+
+      if (fresh.length === 0) {
+        toast("No new skills to suggest.");
+      }
+    } catch (error) {
+      toast.error(error?.response?.data?.message || error.message);
+    } finally {
+      setIsSuggesting(false);
+    }
+  };
+
   return (
     <div className="space-y-4">
-      <div>
-        <h3 className="flex items-center gap-2 text-lg font-semibold text-gray-900">
-          {" "}
-          Skills{" "}
-        </h3>
-        <p className="text-sm text-gray-500">
-          {" "}
-          Add your technical and soft skills{" "}
-        </p>
+      <div className="flex items-center justify-between">
+        <div>
+          <h3 className="flex items-center gap-2 text-lg font-semibold text-gray-900">
+            Skills
+          </h3>
+          <p className="text-sm text-gray-500">
+            Add your technical and soft skills
+          </p>
+        </div>
+
+        <button
+          disabled={isSuggesting}
+          onClick={suggestSkills}
+          className="flex items-center gap-2 px-3 py-1 text-sm bg-purple-100 text-purple-700 rounded hover:bg-purple-200 transition-colors disabled:opacity-50"
+        >
+          {isSuggesting ? (
+            <Loader2 className="size-4 animate-spin" />
+          ) : (
+            <Sparkles className="size-4" />
+          )}
+          {isSuggesting ? "Suggesting..." : "AI Suggest"}
+        </button>
       </div>
 
       <div className="flex gap-2">
@@ -53,6 +101,25 @@ const SkillsForm = ({ data, onChange }) => {
           <Plus className="size-4" /> Add
         </button>
       </div>
+
+      {suggestions.length > 0 && (
+        <div className="bg-purple-50 p-3 rounded-lg space-y-2">
+          <p className="text-sm text-purple-800 font-medium">
+            AI Suggestions (click to add):
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {suggestions.map((skill, index) => (
+              <button
+                key={index}
+                onClick={() => addSuggestion(skill)}
+                className="flex items-center gap-1 px-3 py-1 bg-white text-purple-700 border border-purple-300 rounded-full text-sm hover:bg-purple-100 transition-colors"
+              >
+                <Plus className="w-3 h-3" /> {skill}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
 
       {data.length > 0 ? (
         <div className="flex flex-wrap gap-2">

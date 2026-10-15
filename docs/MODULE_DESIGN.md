@@ -12,7 +12,7 @@ Each module's responsibility and how it interacts with the others.
 | Module | Responsibility | Depends on |
 | ------ | -------------- | ---------- |
 | `db.js` | Establish the Mongoose connection to the `resume-builder` database | `MONGODB_URI` |
-| `ai.js` | Instantiate the OpenAI client | `OPENAI_API_KEY`, `OPENAI_BASE_URL` |
+| `ai.js` | Instantiate the OpenAI client | `GEMINI_API_KEY`, `OPENAI_BASE_URL` |
 | `imageKit.js` | Instantiate the ImageKit client | `IMAGEKIT_PRIVATE_KEY` |
 | `multer.js` | Provide the upload middleware (disk storage) | — |
 

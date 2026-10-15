@@ -106,9 +106,8 @@ cd client && npm run dev      # app → http://localhost:5173
 ```env
 MONGODB_URI=your_mongodb_uri
 JWT_SECRET=your_jwt_secret
-OPENAI_API_KEY=your_openai_key
-OPENAI_BASE_URL=optional_custom_endpoint
-OPENAI_MODEL=your_model          # required for AI + agent features
+GEMINI_API_KEY=your_ai_key
+MODEL=your_model          # required for AI + agent features
 IMAGEKIT_PRIVATE_KEY=your_imagekit_private_key
 PORT=3000
 ```
@@ -359,7 +358,7 @@ MONGODB_URI=your_mongodb_connection_string
 
 JWT_SECRET=your_long_random_secret
 
-OPENAI_API_KEY=your_ai_api\_key
+GEMINI_API_KEY=your_ai_api\_key
 
 IMAGEKIT_PRIVATE_KEY=your_imagekit_private\_key
 
@@ -367,7 +366,7 @@ IMAGEKIT_PRIVATE_KEY=your_imagekit_private\_key
 
 Only configure variables required by your actual backend implementation.
 
-For example, if your AI integration uses a different provider, configure that provider's API key instead of `OPENAI_API_KEY`.
+For example, if your AI integration uses a different provider, configure that provider's API key instead of `GEMINI_API_KEY`.
 
 **Frontend `.env`**
 ```
