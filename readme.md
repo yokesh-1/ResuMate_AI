@@ -33,11 +33,11 @@ A full-stack MERN app for building, editing, and sharing professional resumes �
 
 ## 🌟 Overview
 
-**ResuMate AI** is a full-stack resume-building application designed to simplify the process of creating professional resumes.
+**ResumePilot AI** is a full-stack resume-building application designed to simplify the process of creating professional resumes.
 
 Built using the MERN stack, it combines a React-based interface, an Express.js backend, MongoDB data storage, and AI-powered content enhancement.
 
-Whether you're a student preparing your first resume, a developer exploring new opportunities, or a professional updating your career profile, ResuMate AI provides tools to create and manage your resume in one place.
+Whether you're a student preparing your first resume, a developer exploring new opportunities, or a professional updating your career profile, ResumePilot AI provides tools to create and manage your resume in one place.
 
 ---
 
@@ -174,7 +174,7 @@ Create resumes using dedicated sections for:
 
 ## 🛠️ Tech Stack
 
-ResuMate AI uses modern JavaScript technologies across its frontend and backend.
+ResumePilot AI uses modern JavaScript technologies across its frontend and backend.
 
 ### Frontend
 
@@ -215,7 +215,7 @@ ResuMate AI uses modern JavaScript technologies across its frontend and backend.
 
 ## 🏗️ Architecture
 
-ResuMate AI follows a client-server architecture.
+ResumePilot AI follows a client-server architecture.
 ```
 resume-builder/
 │
@@ -304,7 +304,7 @@ resume-builder/
 
 ## ⚡ Getting Started
 
-Follow these steps to run ResuMate AI locally.
+Follow these steps to run ResumePilot AI locally.
 
 ### Prerequisites
 
@@ -435,7 +435,7 @@ Register an account, log in, and start building your resume.
 
 ## 🤖 AI Capabilities
 
-ResuMate AI integrates AI assistance into resume editing.
+ResumePilot AI integrates AI assistance into resume editing.
 
 ### ✨ Experience Description Enhancement
 
@@ -464,7 +464,7 @@ Keep provider credentials on the server and handle API failures gracefully.
 
 ## 🎨 Resume Customization
 
-ResuMate AI supports resume customization through its editor.
+ResumePilot AI supports resume customization through its editor.
 
 ### Available Customization Options
 
@@ -564,7 +564,7 @@ The exact request format depends on the backend controller and upload middleware
 
 ## 🚀 Deployment
 
-ResuMate AI can be deployed using separate frontend and backend hosting services.
+ResumePilot AI can be deployed using separate frontend and backend hosting services.
 
 ### Frontend
 
