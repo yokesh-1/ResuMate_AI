@@ -68,7 +68,7 @@ const Footer = () => {
                             </svg>
                         </a>
                     </div>
-                    <p className="mt-3 text-center"> © 2026 Resume Builder </p>
+                    <p className="mt-3 text-center"> © 2026  ResumePilot </p>
                 </div>
             </footer>
 
